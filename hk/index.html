@@ -8,8 +8,10 @@
         html, body {
             height: 100%;
             margin: 0;
+            padding: 0;
             overflow: auto;
-        }
+            -webkit-overflow-scrolling: touch; /* 重要：启用 iOS 弹性滚动 */
+            }
         body {
             -webkit-user-select: none;
             -moz-user-select: none;
