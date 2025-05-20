@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -37,6 +38,7 @@
       border-radius: 8px;
       font-size: 18px;
       text-decoration: none;
+      margin: 10px 0;
     }
     .note {
       margin-top: 40px;
@@ -44,16 +46,42 @@
       color: #999;
     }
   </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      const isIOS = /iPhone|iPad|iPod/.test(ua);
+      const isAndroid = /Android/.test(ua);
+      const container = document.querySelector('.container');
+
+      if (isIOS) {
+        container.innerHTML = `
+          <h1>下载 iOS 企业版 App</h1>
+          <p>请使用 <strong>Safari 浏览器</strong> 打开本页面以安装应用。</p>
+          <a class="button" href="itms-services://?action=download-manifest&url=https://slightlysweet.github.io/PrivacyPolicyFiles/download/iOS/manifest.plist">
+            点击安装 iOS 版
+          </a>
+          <p class="note">如遇“未受信任的企业开发者”，请前往 设置 → 通用 → VPN与设备管理 → 设备信任。</p>
+        `;
+      } else if (isAndroid) {
+        container.innerHTML = `
+          <h1>下载 Android 企业版 App</h1>
+          <p>点击按钮下载安装 Android 安装包。</p>
+          <a class="button" href="https://slightlysweet.github.io/PrivacyPolicyFiles/download/Android/evBleChargeToC.apk">
+            下载 Android 版
+          </a>
+        `;
+      } else {
+        container.innerHTML = `
+          <h1>平台不支持</h1>
+          <p>请使用 iOS 或 Android 设备访问此页面以安装应用。</p>
+        `;
+      }
+    });
+  </script>
 </head>
 <body>
   <div class="container">
-    <h1>下载企业版 App</h1>
-    <p>请使用 Safari 浏览器打开本页面以安装企业版 App。</p>
-
-    <a class="button" href="itms-services://?action=download-manifest&url=https://slightlysweet.github.io/PrivacyPolicyFiles/download/iOS/manifest.plist">
-      点击下载安装
-    </a>
-    <p class="note">安装后如遇“未受信任的企业开发者”，请前往 设置 → 通用 → VPN与设备管理 手动信任。</p>
+    <!-- 页面内容将在加载后自动插入 -->
   </div>
 </body>
 </html>
